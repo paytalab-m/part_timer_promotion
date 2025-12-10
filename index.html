@@ -1,0 +1,178 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+  <title>패스오더 신규가입 쿠폰</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
+      background: #5D5FEF;
+      min-height: 100vh;
+      padding-bottom: 100px;
+    }
+    
+    /* 메인 컨텐츠 */
+    .main-content {
+      width: 100%;
+      max-width: 480px;
+      margin: 0 auto;
+      padding: 60px 24px;
+      text-align: center;
+    }
+    
+    .logo {
+      width: 80px;
+      height: 80px;
+      background: white;
+      border-radius: 20px;
+      margin: 0 auto 32px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      font-weight: 800;
+      color: #5D5FEF;
+    }
+    
+    .title {
+      font-size: 28px;
+      font-weight: 700;
+      color: white;
+      margin-bottom: 12px;
+    }
+    
+    .subtitle {
+      font-size: 16px;
+      color: rgba(255,255,255,0.8);
+      line-height: 1.6;
+      margin-bottom: 40px;
+    }
+    
+    .coupon-box {
+      background: white;
+      border-radius: 20px;
+      padding: 32px 24px;
+      margin-bottom: 24px;
+    }
+    
+    .coupon-amount {
+      font-size: 48px;
+      font-weight: 800;
+      color: #5D5FEF;
+    }
+    
+    .coupon-desc {
+      font-size: 15px;
+      color: #666;
+      margin-top: 8px;
+    }
+    
+    .notice {
+      font-size: 13px;
+      color: rgba(255,255,255,0.6);
+      line-height: 1.6;
+    }
+    
+    /* 하단 고정 CTA */
+    .fixed-cta {
+      position: fixed;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      background: white;
+      padding: 12px 16px;
+      padding-bottom: calc(12px + env(safe-area-inset-bottom));
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+      z-index: 100;
+    }
+    
+    .cta-button {
+      display: block;
+      background: #5D5FEF;
+      color: white;
+      text-decoration: none;
+      padding: 18px 24px;
+      border-radius: 14px;
+      font-size: 17px;
+      font-weight: 600;
+      text-align: center;
+      max-width: 480px;
+      margin: 0 auto;
+    }
+    
+    .cta-button:active {
+      transform: scale(0.98);
+    }
+
+    /* 임시 표시 - 나중에 삭제 */
+    .temp-info {
+      margin-top: 40px;
+      padding: 16px;
+      background: rgba(255,255,255,0.1);
+      border-radius: 12px;
+      font-size: 13px;
+      color: rgba(255,255,255,0.7);
+    }
+  </style>
+</head>
+<body>
+
+  <div class="main-content">
+    <div class="logo">P</div>
+    <h1 class="title">패스오더 첫 주문 혜택</h1>
+    <p class="subtitle">지금 앱 설치하고<br>첫 주문에 바로 쓰는 쿠폰 받아가세요!</p>
+    
+    <div class="coupon-box">
+      <div class="coupon-amount">3,000원</div>
+      <div class="coupon-desc">신규 가입 즉시 지급</div>
+    </div>
+    
+    <p class="notice">
+      * 신규 가입자에 한해 적용됩니다<br>
+      * 쿠폰은 가입 후 자동 지급됩니다
+    </p>
+
+    <!-- 임시: 파라미터 확인용 (나중에 삭제) -->
+    <div class="temp-info">
+      <strong>🔧 테스트용 정보</strong><br>
+      <span id="debug-info">파라미터 로딩 중...</span>
+    </div>
+  </div>
+
+  <!-- 하단 고정 CTA -->
+  <div class="fixed-cta">
+    <a href="#" id="cta-button" class="cta-button">
+      앱 다운로드하고 쿠폰 받기
+    </a>
+  </div>
+
+  <script>
+    // URL 파라미터 추출
+    const params = new URLSearchParams(window.location.search);
+    const albaId = params.get('alba_id') || 'unknown';
+    const storeId = params.get('store_id') || 'unknown';
+    
+    // OneLink URL 생성 (★ 실제 템플릿 ID로 교체 필요)
+    const onelinkBase = 'https://passorder.onelink.me/YOUR_TEMPLATE_ID';
+    const onelinkUrl = `${onelinkBase}?af_sub1=${albaId}&af_sub2=${storeId}`;
+    
+    // CTA 버튼에 링크 적용
+    document.getElementById('cta-button').href = onelinkUrl;
+    
+    // 디버그 정보 표시 (테스트용 - 나중에 삭제)
+    document.getElementById('debug-info').innerHTML = `
+      alba_id: <strong>${albaId}</strong><br>
+      store_id: <strong>${storeId}</strong><br>
+      OneLink: <strong>${onelinkUrl}</strong>
+    `;
+  </script>
+
+</body>
+</html>
