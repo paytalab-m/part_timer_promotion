@@ -188,17 +188,18 @@
 
   <!-- Google Apps Script 시트 적재 -->
   <script>
-  (function() {
-    const params = new URLSearchParams(window.location.search);
-    const albaId = params.get('alba_id') || 'unknown';
-    const timestamp = new Date().toISOString();
-    
-    const scriptUrl = 'https://script.google.com/macros/s/AKfycbyiFMs6FN56W7Lbj1lhMwwBrl_gyQC9BttZJbH1rQqNmXDFcruiEaHgyvUB1KoONFKkjg/exec';
-    
-    // 이미지 비콘 방식 (CORS 우회)
-    const img = new Image();
-    img.src = `${scriptUrl}?alba_id=${albaId}&timestamp=${timestamp}&event=page_view`;
-  })();
+    (function() {
+      const params = new URLSearchParams(window.location.search);
+      const albaId = params.get('alba_id') || 'unknown';
+      const timestamp = new Date().toISOString();
+      
+      const scriptUrl = 'https://script.google.com/macros/s/AKfycbyiFMs6FN56W7Lbj1lhMwwBrl_gyQC9BttZJbH1rQqNmXDFcruiEaHgyvUB1KoONFKkjg/exec';
+      
+      // no-cors 모드로 요청
+      fetch(`${scriptUrl}?alba_id=${albaId}&timestamp=${timestamp}&event=page_view`, {
+        mode: 'no-cors'
+      });
+    })();
   </script>
   
 </body>
