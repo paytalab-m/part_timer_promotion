@@ -4,6 +4,18 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
   <title>패스오더 신규가입 쿠폰</title>
+
+  <!-- Google Tag Manager -->
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-TBJRDLWT');</script>
+  <!-- End Google Tag Manager -->
+
+
+
+  
   <style>
     * {
       margin: 0;
@@ -174,5 +186,21 @@
     `;
   </script>
 
+  <!-- Google Apps Script 시트 적재 -->
+<script>
+  (function() {
+    const params = new URLSearchParams(window.location.search);
+    const albaId = params.get('alba_id') || 'unknown';
+    const timestamp = new Date().toISOString();
+    
+    // Apps Script 웹앱 URL (나중에 교체)
+    const scriptUrl = 'https://script.google.com/macros/s/AKfycbyiFMs6FN56W7Lbj1lhMwwBrl_gyQC9BttZJbH1rQqNmXDFcruiEaHgyvUB1KoONFKkjg/exec';
+    
+    // 시트에 데이터 전송
+    fetch(`${scriptUrl}?alba_id=${albaId}&timestamp=${timestamp}&event=page_view`)
+      .catch(err => console.log('Logging skipped'));
+  })();
+</script>
+  
 </body>
 </html>
