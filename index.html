@@ -172,8 +172,8 @@
     const storeId = params.get('store_id') || 'unknown';
     
     // OneLink URL 생성 (★ 실제 템플릿 ID로 교체 필요)
-    const onelinkBase = 'https://passorder.onelink.me/YOUR_TEMPLATE_ID';
-    const onelinkUrl = `${onelinkBase}?af_sub1=${albaId}&af_sub2=${storeId}`;
+    const onelinkBase = 'https://passorder.onelink.me/NQTU/q3apge0m';
+    const onelinkUrl = `${onelinkBase}?af_sub1=${albaId}`;
     
     // CTA 버튼에 링크 적용
     document.getElementById('cta-button').href = onelinkUrl;
