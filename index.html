@@ -187,20 +187,19 @@
   </script>
 
   <!-- Google Apps Script 시트 적재 -->
-<script>
+  <script>
   (function() {
     const params = new URLSearchParams(window.location.search);
     const albaId = params.get('alba_id') || 'unknown';
     const timestamp = new Date().toISOString();
     
-    // Apps Script 웹앱 URL (나중에 교체)
     const scriptUrl = 'https://script.google.com/macros/s/AKfycbyiFMs6FN56W7Lbj1lhMwwBrl_gyQC9BttZJbH1rQqNmXDFcruiEaHgyvUB1KoONFKkjg/exec';
     
-    // 시트에 데이터 전송
-    fetch(`${scriptUrl}?alba_id=${albaId}&timestamp=${timestamp}&event=page_view`)
-      .catch(err => console.log('Logging skipped'));
+    // 이미지 비콘 방식 (CORS 우회)
+    const img = new Image();
+    img.src = `${scriptUrl}?alba_id=${albaId}&timestamp=${timestamp}&event=page_view`;
   })();
-</script>
+  </script>
   
 </body>
 </html>
