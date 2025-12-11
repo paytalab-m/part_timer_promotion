@@ -3,18 +3,10 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
-  <title>패스오더 신규가입 쿠폰</title>
-
+  <title>패스오더 알바 쿠폰 혜택</title>
+  
   <!-- Google Tag Manager -->
-  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-  'https://www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-  })(window,document,'script','dataLayer','GTM-TBJRDLWT');</script>
-  <!-- End Google Tag Manager -->
-
-
-
+  <!-- GTM 코드는 여기에 추가 -->
   
   <style>
     * {
@@ -23,11 +15,15 @@
       box-sizing: border-box;
     }
     
+    html, body {
+      width: 100%;
+      overflow-x: hidden;
+    }
+    
     body {
       font-family: -apple-system, BlinkMacSystemFont, 'Malgun Gothic', sans-serif;
-      background: #5D5FEF;
-      min-height: 100vh;
-      padding-bottom: 100px;
+      background: #ffffff;
+      padding-bottom: 80px; /* 하단 고정 CTA 높이만큼 여백 */
     }
     
     /* 메인 컨텐츠 */
@@ -35,133 +31,98 @@
       width: 100%;
       max-width: 480px;
       margin: 0 auto;
-      padding: 60px 24px;
-      text-align: center;
     }
     
-    .logo {
-      width: 80px;
-      height: 80px;
-      background: white;
-      border-radius: 20px;
-      margin: 0 auto 32px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 36px;
-      font-weight: 800;
-      color: #5D5FEF;
+    .main-content img {
+      width: 100%;
+      display: block;
     }
     
-    .title {
-      font-size: 28px;
-      font-weight: 700;
-      color: white;
-      margin-bottom: 12px;
+    /* 중간 CTA (2.png) - 클릭 가능 */
+    .cta-middle {
+      display: block;
+      cursor: pointer;
     }
     
-    .subtitle {
-      font-size: 16px;
-      color: rgba(255,255,255,0.8);
-      line-height: 1.6;
-      margin-bottom: 40px;
+    .cta-middle img {
+      width: 100%;
+      display: block;
     }
     
-    .coupon-box {
-      background: white;
-      border-radius: 20px;
-      padding: 32px 24px;
-      margin-bottom: 24px;
-    }
-    
-    .coupon-amount {
-      font-size: 48px;
-      font-weight: 800;
-      color: #5D5FEF;
-    }
-    
-    .coupon-desc {
-      font-size: 15px;
-      color: #666;
-      margin-top: 8px;
-    }
-    
-    .notice {
-      font-size: 13px;
-      color: rgba(255,255,255,0.6);
-      line-height: 1.6;
-    }
-    
-    /* 하단 고정 CTA */
+    /* 하단 고정 CTA (9.png) */
     .fixed-cta {
       position: fixed;
       bottom: 0;
       left: 0;
       right: 0;
-      background: white;
-      padding: 12px 16px;
-      padding-bottom: calc(12px + env(safe-area-inset-bottom));
-      box-shadow: 0 -4px 20px rgba(0,0,0,0.15);
+      background: #fff;
+      padding: 8px 16px;
+      padding-bottom: calc(8px + env(safe-area-inset-bottom));
+      box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
       z-index: 100;
     }
     
-    .cta-button {
+    .fixed-cta a {
       display: block;
-      background: #5D5FEF;
-      color: white;
-      text-decoration: none;
-      padding: 18px 24px;
-      border-radius: 14px;
-      font-size: 17px;
-      font-weight: 600;
-      text-align: center;
       max-width: 480px;
       margin: 0 auto;
     }
     
-    .cta-button:active {
+    .fixed-cta img {
+      width: 100%;
+      display: block;
+    }
+    
+    /* CTA 클릭 효과 */
+    .cta-middle:active img,
+    .fixed-cta a:active img {
+      opacity: 0.9;
       transform: scale(0.98);
     }
-
-    /* 임시 표시 - 나중에 삭제 */
-    .temp-info {
-      margin-top: 40px;
-      padding: 16px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 12px;
-      font-size: 13px;
-      color: rgba(255,255,255,0.7);
+    
+    .cta-middle img,
+    .fixed-cta img {
+      transition: transform 0.1s, opacity 0.1s;
     }
   </style>
 </head>
 <body>
 
-  <div class="main-content">
-    <div class="logo">P</div>
-    <h1 class="title">패스오더 첫 주문 혜택</h1>
-    <p class="subtitle">지금 앱 설치하고<br>첫 주문에 바로 쓰는 쿠폰 받아가세요!</p>
-    
-    <div class="coupon-box">
-      <div class="coupon-amount">3,000원</div>
-      <div class="coupon-desc">신규 가입 즉시 지급</div>
-    </div>
-    
-    <p class="notice">
-      * 신규 가입자에 한해 적용됩니다<br>
-      * 쿠폰은 가입 후 자동 지급됩니다
-    </p>
+  <!-- Google Tag Manager (noscript) -->
+  <!-- GTM noscript 코드는 여기에 추가 -->
 
-    <!-- 임시: 파라미터 확인용 (나중에 삭제) -->
-    <div class="temp-info">
-      <strong>🔧 테스트용 정보</strong><br>
-      <span id="debug-info">파라미터 로딩 중...</span>
-    </div>
+  <div class="main-content">
+    <!-- 1. 히어로 섹션 -->
+    <img src="images/1.png" alt="알바에게 쿠폰 받은 고객님만을 위한 깜짝 혜택">
+    
+    <!-- 2. 중간 CTA -->
+    <a href="#" id="cta-middle" class="cta-middle">
+      <img src="images/2.png" alt="내 혜택 받고, 알바도 혜택 주기">
+    </a>
+    
+    <!-- 3. 고객 혜택 안내 -->
+    <img src="images/3.png" alt="고객님은 이런 혜택을 받아요 - 100원 커피, 1500원 추가쿠폰">
+    
+    <!-- 4. 알바 혜택 + 비교 -->
+    <img src="images/4.png" alt="고객님이 혜택 받으면 알바도 혜택 받아요">
+    
+    <!-- 5. 패스오더 소개 -->
+    <img src="images/5.png" alt="오늘부터 당장 패스오더를 써야 하는 이유">
+    
+    <!-- 6. 3단계 사용법 -->
+    <img src="images/6.png" alt="패스오더 사용법 3단계">
+    
+    <!-- 7. 마무리 텍스트 -->
+    <img src="images/7.png" alt="오늘부터 패스오더로 고객님도 알바도 편한 주문 경험하세요">
+    
+    <!-- 8. 유의사항 -->
+    <img src="images/8.png" alt="유의사항">
   </div>
 
   <!-- 하단 고정 CTA -->
   <div class="fixed-cta">
-    <a href="#" id="cta-button" class="cta-button">
-      앱 다운로드하고 쿠폰 받기
+    <a href="#" id="cta-bottom">
+      <img src="images/9.png" alt="100원 커피 혜택 받고, 알바 리워드도 주기">
     </a>
   </div>
 
@@ -169,38 +130,20 @@
     // URL 파라미터 추출
     const params = new URLSearchParams(window.location.search);
     const albaId = params.get('alba_id') || 'unknown';
-    const storeId = params.get('store_id') || 'unknown';
     
-    // OneLink URL 생성 (★ 실제 템플릿 ID로 교체 필요)
-    const onelinkBase = 'https://passorder.onelink.me/NQTU/q3apge0m';
-    const onelinkUrl = `${onelinkBase}?af_sub1=${albaId}`;
+    // CTA별 패스링크 URL (af_sub1에 alba_id 전달)
+    const ctaMiddleUrl = `https://passorder.kr/cta_1?af_sub1=${albaId}`;
+    const ctaBottomUrl = `https://passorder.kr/cta_2?af_sub1=${albaId}`;
     
-    // CTA 버튼에 링크 적용
-    document.getElementById('cta-button').href = onelinkUrl;
+    // CTA 버튼들에 링크 적용
+    document.getElementById('cta-middle').href = ctaMiddleUrl;
+    document.getElementById('cta-bottom').href = ctaBottomUrl;
     
-    // 디버그 정보 표시 (테스트용 - 나중에 삭제)
-    document.getElementById('debug-info').innerHTML = `
-      alba_id: <strong>${albaId}</strong><br>
-      store_id: <strong>${storeId}</strong><br>
-      OneLink: <strong>${onelinkUrl}</strong>
-    `;
+    // 디버그용 (테스트 후 삭제)
+    console.log('alba_id:', albaId);
+    console.log('CTA 1 URL:', ctaMiddleUrl);
+    console.log('CTA 2 URL:', ctaBottomUrl);
   </script>
 
-  <!-- Google Apps Script 시트 적재 -->
-  <script>
-    (function() {
-      const params = new URLSearchParams(window.location.search);
-      const albaId = params.get('alba_id') || 'unknown';
-      const timestamp = new Date().toISOString();
-      
-      const scriptUrl = 'https://script.google.com/macros/s/AKfycbyiFMs6FN56W7Lbj1lhMwwBrl_gyQC9BttZJbH1rQqNmXDFcruiEaHgyvUB1KoONFKkjg/exec';
-      
-      // no-cors 모드로 요청
-      fetch(`${scriptUrl}?alba_id=${albaId}&timestamp=${timestamp}&event=page_view`, {
-        mode: 'no-cors'
-      });
-    })();
-  </script>
-  
 </body>
 </html>
