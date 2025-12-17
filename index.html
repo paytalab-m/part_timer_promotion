@@ -61,8 +61,8 @@
       left: 0;
       right: 0;
       background: #fff;
-      padding: 8px 16px;
-      padding-bottom: calc(8px + env(safe-area-inset-bottom));
+      padding: 0;
+      padding-bottom: env(safe-area-inset-bottom); /* 아이폰 홈바만 대응 */
       box-shadow: 0 -4px 20px rgba(0,0,0,0.1);
       z-index: 100;
     }
