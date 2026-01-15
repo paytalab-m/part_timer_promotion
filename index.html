@@ -148,6 +148,86 @@
     console.log('alba_id:', albaId);
     console.log('CTA 1 URL:', ctaMiddleUrl);
     console.log('CTA 2 URL:', ctaBottomUrl);
+
+    // ========================================
+    // 구글 시트 로그/이벤트 트래커 (추가)
+    // ========================================
+    
+    const TRACKER_URL = 'https://script.google.com/macros/s/AKfycbwOQMEh2CMNUZ4qAPT5k-KCWWSPHaPICqXnxDeoen02tNPBGOawuiH4GOS8ZkfZNdGf/exec';
+    
+    // 공통 데이터
+    const trackingData = {
+      alba_id: albaId,
+      page_url: window.location.href,
+      referrer: document.referrer || 'direct',
+      user_agent: navigator.userAgent
+    };
+    
+    // 로그 전송 함수
+    function sendLog() {
+      fetch(TRACKER_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'log',
+          ...trackingData
+        })
+      }).catch(err => console.log('Log error:', err));
+    }
+    
+    // 이벤트 전송 함수
+    function sendEvent(eventName, eventParams = '', method = '') {
+      fetch(TRACKER_URL, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          type: 'event',
+          event_name: eventName,
+          event_params: eventParams,
+          method: method,
+          ...trackingData
+        })
+      }).catch(err => console.log('Event error:', err));
+    }
+    
+    // 1. 페이지뷰 로그 + 이벤트
+    sendLog();
+    sendEvent('page_view', '', 'auto');
+    
+    // 2. CTA 클릭 이벤트
+    document.getElementById('cta-middle').addEventListener('click', function() {
+      sendEvent('cta_click_middle', 'position=middle', 'click');
+    });
+    
+    document.getElementById('cta-bottom').addEventListener('click', function() {
+      sendEvent('cta_click_bottom', 'position=bottom_floating', 'click');
+    });
+    
+    // 3. 스크롤 깊이 이벤트 (0, 25, 50, 75, 100)
+    const scrollThresholds = [0, 25, 50, 75, 100];
+    const scrollFired = {};
+    
+    scrollFired[0] = true;
+    sendEvent('scroll_depth', 'percent=0', 'scroll');
+    
+    window.addEventListener('scroll', function() {
+      const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+      const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercent = docHeight > 0 ? Math.round((scrollTop / docHeight) * 100) : 0;
+      
+      scrollThresholds.forEach(function(threshold) {
+        if (scrollPercent >= threshold && !scrollFired[threshold]) {
+          scrollFired[threshold] = true;
+          sendEvent('scroll_depth', 'percent=' + threshold, 'scroll');
+        }
+      });
+    });
+    
+    // ========================================
+    // 구글 시트 트래커 끝
+    // ========================================
   </script>
 
 </body>
