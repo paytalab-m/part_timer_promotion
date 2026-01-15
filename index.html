@@ -195,15 +195,24 @@
     // 1. 페이지뷰 로그 + 이벤트
     sendLog();
     sendEvent('page_view', '', 'auto');
-    
-    // 2. CTA 클릭 이벤트
-    document.getElementById('cta-middle').addEventListener('click', function() {
+
+    // 2. CTA 클릭 이벤트 (페이지 이동 전 로그 전송 보장)
+    document.getElementById('cta-middle').addEventListener('click', function(e) {
+      e.preventDefault();
       sendEvent('cta_click_middle', 'position=middle', 'click');
+      setTimeout(function() {
+        window.location.href = ctaMiddleUrl;
+      }, 150);
     });
     
-    document.getElementById('cta-bottom').addEventListener('click', function() {
+    document.getElementById('cta-bottom').addEventListener('click', function(e) {
+      e.preventDefault();
       sendEvent('cta_click_bottom', 'position=bottom_floating', 'click');
+      setTimeout(function() {
+        window.location.href = ctaBottomUrl;
+      }, 150);
     });
+  
     
     // 3. 스크롤 깊이 이벤트 (0, 25, 50, 75, 100)
     const scrollThresholds = [0, 25, 50, 75, 100];
